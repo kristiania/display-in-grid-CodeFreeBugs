@@ -1,26 +1,92 @@
-.grid-container{
 
+html {
+    /* Added this so 1rem = 1px for easier calculations :D */
+    font-size: 10px; 
 }
 
-grid-item {
+body,
+.grid-container,
+.grid-item,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#grid-one{
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2em;
+}
+
+.grid-item {
+    display: grid;
+    border-radius: 2rem;
+    font-size: 50px;
+    place-content: center;
+}
+
+.item-one {
     background-color: red;
-    color: red;
+    color: black;
 }
 
-#grid-two{
+.item-two {
     background-color: blue;
-    color: blue;
+    color: white;
 }
 
-#grid-three{
+.item-three {
     background-color: green;
-    color: green;
+    color: black;
 }
 
-.grid-four{
+.item-four {
     background-color: purple;
-    color: purple;
+    color: white;
+}
+
+.item-five {
+    background-color:yellow;
+    color: black;
+}
+
+/* Mobile */
+@media only screen and (min-width: 300px) {
+
+}
+
+/* Tablet / laptop */
+@media only screen and (min-width: 600px) {
+    
+    .grid-container {
+        min-height: calc(100vh - 4em);
+    }
+
+    .grid-item {
+        grid-column-end: span 2;
+    }
+
+    .item-one {
+        grid-column-end: span 4;
+    }
+
+    .item-two {
+        grid-row: 2 / span 2;
+    }
+
+    .item-four {
+        grid-column-end: span 1;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+    
+    .grid-container {
+        min-height: calc(100vh - 4em);
+    }
 }
