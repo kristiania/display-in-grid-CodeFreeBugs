@@ -1,9 +1,139 @@
+
+/* Shared styling */
+
+html {
+    /* Added this so 1rem = 1px for easier calculations :D */
+    font-size: 10px; 
+}
+
+body,
+.grid-container,
+.grid-item,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+    display: grid;
+    /* grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr); */
+    margin: 2rem;
+}
+
+.grid-item {
+    font-size: 50px;
+    border-radius: 2rem;
+}
+
+.item-one {
+    background:rgb(160, 156, 156);
+}
+
+.item-two {
+    background: rgb(124, 121, 121);
+}
+
+.item-three {
+    background: rgb(124, 121, 121);
+}
+
+.item-four {
+    background: lightgrey;
+}
+
+.item-five {
+    background: rgb(160, 156, 156);
+}
+
 /* For mobile phones: */
+@media only screen and (min-width: 300px),
+(max-width: 500px) {
+
+    .grid-container {
+        max-width: calc(100vw - 2em);
+        min-height: 20vh;
+        display: grid;
+        grid-auto-rows: min-content max-content;
+        gap: 5rem;
+    }
+
+    .grid-item {
+        grid-column-end: span 4;
+        max-height: 10vh;
+        max-width: 100%;
+        font-size: 4em;
+        color: white;
+        padding: .3em .3em;
+    }
+
+    .item-three {
+        max-height: max-content;
+    }
+
+    .item-four {
+        color: black;
+    }
+
+    .grid-item p {
+        margin: 0;
+        margin-bottom: .5rem;
+    }
+}
   
 @media only screen and (min-width: 600px) {
 /* For tablets: */
+    .grid-container {
+        max-width: calc(100% - 2em);
+        max-height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(4, calc( (100% / 4) - 1.5rem ));
+        grid-template-rows: repeat(4, auto);
+        gap: 2rem;
+    }
+
+    .grid-item {
+        min-height: 100%;
+        max-height: min-content;
+        grid-column-end: span 4;
+        color: white;
+        padding: .3em .3em;
+    }
+
+    .item-two {
+        max-height: max-content;
+        grid-column: 1 / 1;
+        grid-row: 2 / 2;
+    }
+
+    .item-three {
+        grid-column: 2 / -1;
+    }
 }
 
 @media only screen and (min-width: 768px) {
-/* For desktop: */
+    /* For desktop: */
+    .grid-container {
+        min-height: calc(100vh - 5rem);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(20rem, auto));
+        grid-template-rows: repeat(3, 20rem);
+    }
+
+    .grid-item {
+        min-height: 10vh;
+        max-height: 10vh;
+    }    
+
+    .item-three {
+        grid-column-end: span 2;
+        max-height: max-content;
+    }
+
+    .item-four {
+        grid-row: 2;
+        grid-column: 4;
+    }
 }
